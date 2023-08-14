@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Website</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* Hide the iframe itself */
+        iframe {
+            display: block;
+            position: relative;
+            top: -100px; /* Adjust this value to hide more or less of the content */
+            pointer-events: none; /* Prevent interaction with the iframe content */
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Your Website</h1>
+    
+    <iframe id="embeddedFrame" src="https://www.sofascore.com/cricket" width="100%" height="500" style="border:none;"></iframe>
+    
+    <script>
+        $(document).ready(function() {
+            // Wait for the iframe content to load
+            $('#embeddedFrame').on('load', function() {
+                // Access the iframe's contents
+                var iframeContents = $('#embeddedFrame').contents();
+                
+                // Hide the header and footer within the iframe
+                iframeContents.find('#header').hide();
+                iframeContents.find('#footer').hide();
+            });
+        });
+    </script>
+</body>
+</html>
